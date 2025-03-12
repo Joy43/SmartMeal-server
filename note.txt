@@ -15,16 +15,16 @@ npm i --save-dev @types/express
 npm i --save-dev @types/corsnpm i --save-dev @types/cors
 npm install typescript ts-node @types/node @types/express @types/cors --save-dev
 ./node_modules/.bin/tsc --init
-# npm install dotenv --save
-# tsc -init
-#  "rootDir": "./src",  
-# "outdir":""./dist"
-# npm i --save-dev @types/express
-#   "build": "tsc",
-# npm i -D eslint@9.14.0 @eslint/js @types/eslint__js typescript typescript-eslint
-# npm i -D --exact prettier
-# npm i http-status-codes
-# npm i zod
+npm install dotenv --save
+tsc -init
+"rootDir": "./src",  
+"outdir":""./dist"
+npm i --save-dev @types/express
+"build": "tsc",
+npm i -D eslint@9.14.0 @eslint/js @types/eslint__js typescript typescript-eslint
+npm i -D --exact prettier
+npm i http-status-codes
+npm i zod
 
 
 ----------es lint-------
@@ -38,3 +38,6 @@ npx eslint --init
 --------------package--------
 yarn add bcrypt
 yarn add @types/bcryptjs
+yarn add -D @types/jsonwebtoken
+
+
