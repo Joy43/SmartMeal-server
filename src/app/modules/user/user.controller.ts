@@ -37,21 +37,25 @@ const createUser = catchAsync(
     })
   })
 //   -----------single user get-------------
-  const getSingleUser = catchAsync(async (req, res) => {
-    console.log(req.params)
-    const userId = req.params.userId
-  
-    const result = await userService.getSingleUser(userId)
-  
-    sendResponse(res, {
-      statusCode: 
-      httpStatus.OK,
-      success:true,
-      message: 'User getting successfully',
-      data: result,
-    })
-  })
-  
+const getSingleUser = catchAsync(async (req, res) => {
+  console.log("📩 Received userId:", req.params.userId);
+
+  const userId = req.params.userId;
+  const result = await userService.getSingleUser(userId);
+
+  console.log("🔎 Database Query Result:", result);
+
+  sendResponse(res, {
+      statusCode: httpStatus.OK,
+      success: true,
+      message: "User getting successfully",
+      data: {
+        result
+      }
+  });
+});
+
+
 //   ------------update user----------------
   const updateUser = catchAsync(async (req, res) => {
     const userId = req.params.userId
@@ -62,7 +66,9 @@ const createUser = catchAsync(
       statusCode: httpStatus.OK,
       success:true,
       message: 'User updated successfully',
-      data: result,
+      data: {
+        result
+      },
     })
   })
 //   ------------delete user----------------

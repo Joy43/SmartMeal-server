@@ -13,7 +13,8 @@ const register=async(req:Request,res:Response)=>{
     success:true,
     message:'user is register sucessfully',
     statusCode:201,
-    data:result
+    data: result,
+
  })
 
 }

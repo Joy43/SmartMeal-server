@@ -16,9 +16,9 @@ const getUser = async () => {
 }
 
 const getSingleUser = async (id: string) => {
-const result = await User.findById(id)
-  return result
-}
+  const result = await User.findOne({ _id: id }); 
+  return result;
+};
 
 const updateUser = async (id: string, data: TUser) => {
   const result = await User.findByIdAndUpdate(id, data, {

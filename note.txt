@@ -39,5 +39,10 @@ npx eslint --init
 yarn add bcrypt
 yarn add @types/bcryptjs
 yarn add -D @types/jsonwebtoken
+yarn add -D @types/cloudinary
+
+yarn add cloudinary
+
+
 
 
