@@ -1,24 +1,15 @@
-import { Schema, model, Document, Types } from "mongoose";
+import { model, Schema } from "mongoose";
 import { ICategory } from "./category.interface";
 
+// Extend Mongoose Document
+interface ICategoryDocument extends Document, ICategory {}
 
-
-
-// Extend Mongoose Document with ICategory
-interface ICategoryDocument extends Document, ICategory { }
-
-// Define the schema
+// Define Schema
 const categorySchema = new Schema<ICategoryDocument>(
   {
     name: {
       type: String,
       required: [true, "Category name is required"],
-      unique: true,
-      trim: true,
-    },
-    slug: {
-      type: String,
-      required: [true, "Category slug is required"],
       unique: true,
       trim: true,
     },
@@ -31,32 +22,16 @@ const categorySchema = new Schema<ICategoryDocument>(
       ref: "Category",
       default: null,
     },
-    isActive: {
-      type: Boolean,
-      default: true,
-    },
-    createdBy: {
-      type: Schema.Types.ObjectId,
-      ref: "User",
-      required: true,
-    },
     icon: {
       type: String,
       trim: true,
     },
+    products: [{
+      type: Schema.Types.ObjectId,
+      ref: "Product", // Reference to Product model
+    }],
   },
-  {
-    timestamps: true,
-  }
+  { timestamps: true }
 );
-
-categorySchema.pre<ICategory>("validate", function (next) {
-  if (this instanceof Document) {
-    if (this.isModified("name") && !(this as ICategoryDocument).slug) {
-      this.slug = this.name.toLowerCase().replace(/ /g, "-").replace(/[^\w-]+/g, "");
-    }
-  }
-  next();
-});
 
 export const Category = model<ICategoryDocument>("Category", categorySchema);

@@ -1,6 +1,7 @@
 import { USER_ROLE } from "./user.contant";
 
 export type TUser = {
+  _id: string;
   id: string;
   name: string;
   email: string;
