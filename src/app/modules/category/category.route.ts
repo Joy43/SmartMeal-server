@@ -6,6 +6,6 @@ import { categoryValidation } from "./category.validation";
 
 const router=Router();
 // --------create category----------
-router.post('/mealprovider',auth('admin'),validateRequest(categoryValidation.createCategoryValidationSchema),CategoryController.createCategory);
+router.post('/create-category',auth('admin'),validateRequest(categoryValidation.createCategoryValidationSchema),CategoryController.createCategory);
 
 export const categoryRouter=router;

@@ -14,4 +14,5 @@ router.post('/create-admin', (0, validateRequest_1.default)(user_validation_1.Us
 router.get('/', user_controller_1.userController.getUser);
 router.get('/:userId', user_controller_1.userController.getSingleUser);
 router.put('/:userId', user_controller_1.userController.updateUser);
+router.delete('/:userId', user_controller_1.userController.deleteUser);
 exports.userRouter = router;

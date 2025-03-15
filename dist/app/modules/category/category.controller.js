@@ -12,33 +12,28 @@ var __importDefault = (this && this.__importDefault) || function (mod) {
     return (mod && mod.__esModule) ? mod : { "default": mod };
 };
 Object.defineProperty(exports, "__esModule", { value: true });
-exports.AuthController = void 0;
+exports.CategoryController = void 0;
 const catchAsync_1 = __importDefault(require("../utils/catchAsync"));
+const category_service_1 = require("./category.service");
 const sendRequest_1 = __importDefault(require("../utils/sendRequest"));
-const http_status_1 = __importDefault(require("http-status"));
-const auth_service_1 = require("./auth.service");
-// ----------register---------------
-const register = (req, res) => __awaiter(void 0, void 0, void 0, function* () {
-    const result = yield auth_service_1.AuthService.register(req.body);
+const http_status_codes_1 = require("http-status-codes");
+const createCategory = (0, catchAsync_1.default)((req, res) => __awaiter(void 0, void 0, void 0, function* () {
+    console.log("Received Request Body:", req.body);
+    const result = yield category_service_1.CategoryService.createCategory(req.body, req.file);
     (0, sendRequest_1.default)(res, {
+        statusCode: http_status_codes_1.StatusCodes.OK,
         success: true,
-        message: 'user is register sucessfully',
-        statusCode: 201,
+        message: 'Category created successfully',
         data: result,
     });
-});
-// ---------------- login ------
-const login = (0, catchAsync_1.default)((req, res) => __awaiter(void 0, void 0, void 0, function* () {
-    const result = yield auth_service_1.AuthService.login(req.body);
+}));
+const getAllCategory = (0, catchAsync_1.default)((req, res) => __awaiter(void 0, void 0, void 0, function* () {
+    const result = yield category_service_1.CategoryService.getAllCategory(req.query);
     (0, sendRequest_1.default)(res, {
+        statusCode: http_status_codes_1.StatusCodes.OK,
         success: true,
-        message: 'login sucessfully',
-        statusCode: http_status_1.default.OK,
-        data: {
-            token: result.token,
-        },
+        message: 'category are retrieved succesfully',
+        data: result.result,
     });
 }));
-exports.AuthController = {
-    register, login
-};
+exports.CategoryController = { createCategory, getAllCategory };

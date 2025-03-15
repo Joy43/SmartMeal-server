@@ -41,6 +41,7 @@ yarn add @types/bcryptjs
 yarn add -D @types/jsonwebtoken
 yarn add -D @types/cloudinary
 yarn add -D @types/multer
+yarn add @types/cookie-parser --dev
 
 
 

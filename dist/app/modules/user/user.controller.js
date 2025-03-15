@@ -40,14 +40,17 @@ const getUser = (0, catchAsync_1.default)((req, res) => __awaiter(void 0, void 0
 }));
 //   -----------single user get-------------
 const getSingleUser = (0, catchAsync_1.default)((req, res) => __awaiter(void 0, void 0, void 0, function* () {
-    console.log(req.params);
+    console.log("📩 Received userId:", req.params.userId);
     const userId = req.params.userId;
     const result = yield user_service_1.userService.getSingleUser(userId);
+    console.log("🔎 Database Query Result:", result);
     (0, sendRequest_1.default)(res, {
         statusCode: http_status_1.default.OK,
         success: true,
-        message: 'User getting successfully',
-        data: result,
+        message: "User getting successfully",
+        data: {
+            result
+        }
     });
 }));
 //   ------------update user----------------
@@ -59,7 +62,9 @@ const updateUser = (0, catchAsync_1.default)((req, res) => __awaiter(void 0, voi
         statusCode: http_status_1.default.OK,
         success: true,
         message: 'User updated successfully',
-        data: result,
+        data: {
+            result
+        },
     });
 }));
 //   ------------delete user----------------
