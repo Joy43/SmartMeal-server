@@ -6,10 +6,13 @@ import sendResponse from "../utils/sendRequest";
 import { StatusCodes } from "http-status-codes";
 
 const createCategory = catchAsync(async (req: Request, res: Response) => {
+    console.log("Received Request Body:", req.body); 
+
     const result = await CategoryService.createCategory(
         req.body,
         req.file as IImageFile,
     );
+
     sendResponse(res, {
         statusCode: StatusCodes.OK,
         success: true,
@@ -18,6 +21,4 @@ const createCategory = catchAsync(async (req: Request, res: Response) => {
     });
 });
 
-export const CategoryController = {
-    createCategory,
-};
+export const CategoryController = { createCategory };

@@ -1,6 +1,6 @@
 import mongoose, { Schema, model, Document } from "mongoose";
 
-// Review schema
+// --------------Review schema------------------
 const reviewSchema = new Schema({
   userId: { type: String, required: true },
   rating: { type: Number, required: true },
@@ -8,7 +8,7 @@ const reviewSchema = new Schema({
   createdAt: { type: Date, default: Date.now },
 });
 
-// Meal schema
+//------------- Meal schema --------------------
 interface IReview extends Document {
   userId: string;
   rating: number;
@@ -21,7 +21,7 @@ interface IMeal extends Document {
   name: string;
   price: number;
   calories: number;
-  category: string;
+  category: mongoose.Schema.Types.ObjectId
   description: string;
   nutritionInfo: string;
   ingredients: string[];

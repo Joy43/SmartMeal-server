@@ -17,19 +17,12 @@ const categorySchema = new Schema<ICategoryDocument>(
       type: String,
       trim: true,
     },
-    parent: {
-      type: Schema.Types.ObjectId,
-      ref: "Category",
-      default: null,
-    },
+   
     icon: {
       type: String,
       trim: true,
     },
-    products: [{
-      type: Schema.Types.ObjectId,
-      ref: "Product", // Reference to Product model
-    }],
+
   },
   { timestamps: true }
 );
