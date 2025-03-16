@@ -8,6 +8,8 @@ import handleCastError from '../../errors/handleCastError';
 import handleDuplicateError from '../../errors/handleDuplicateError';
 import config from '../../config';
 import handleZodError from '../../errors/handleZodError';
+import AppError from '../error/AppError';
+
 
 
 const globalErrorHandler: ErrorRequestHandler = (err, req, res, next) => {
@@ -42,7 +44,7 @@ const globalErrorHandler: ErrorRequestHandler = (err, req, res, next) => {
         message = simplifiedError?.message;
         errorSources = simplifiedError?.errorSources;
     } else if (err instanceof AppError) {
-        statusCode = err?.statusCode;
+        statusCode = err?.statusCode ?? 500;
         message = err.message;
         errorSources = [
             {
